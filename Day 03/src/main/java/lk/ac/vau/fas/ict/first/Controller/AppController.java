@@ -89,6 +89,14 @@ public class AppController {
         return students;
     }
 
+    //Add a new Student using mstudents
+    @PostMapping("/add")
+    public String addNewStudent(@RequestBody Student student) {
+        mstudents.put(student.getRegNo(), student);
+        return "New Student Added";
+    }
+    
+
     // Update student by regNo
     @PutMapping("/student/update/{regno}")
     public Student updateStudent(@PathVariable("regno") String regNo, @RequestBody Student updatedStudent) {
