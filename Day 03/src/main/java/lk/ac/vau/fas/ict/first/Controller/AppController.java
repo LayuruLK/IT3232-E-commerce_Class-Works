@@ -26,6 +26,7 @@ public class AppController {
     Student Bob = new Student("2021ICT01", "Bob Marely", 23, "IT", 3.21);
     Student Amal = new Student("2020ICT02", "Amal Perera", 24, "AMC", 3.41);
     Student Kamal = new Student("2022ICT03", "Kamal Gunasinghe", 22, "AMC", 2.91);
+    Student Layuru = new Student("2020ICT22", "Layuru Lakvidu", 22, "IT", 3.57);
     
     private static List<Student> students = new ArrayList<Student>();
     private Map<String, Student> mstudents = new HashMap<String, Student>();
@@ -38,6 +39,7 @@ public class AppController {
         mstudents.put(Bob.getRegNo(), Bob);
         mstudents.put(Amal.getRegNo(), Amal);
         mstudents.put(Kamal.getRegNo(), Kamal);
+        mstudents.put(Layuru.getRegNo(), Layuru);
     }
 
     // A method to return a student
@@ -94,6 +96,26 @@ public class AppController {
     public String addNewStudent(@RequestBody Student student) {
         mstudents.put(student.getRegNo(), student);
         return "New Student Added";
+    }
+
+    //Delete the student in Map
+    @DeleteMapping("/student/{id}")
+    public String DeleteAStudent(@PathVariable("id") String regNo) {
+        if(mstudents.get(regNo) != null) {
+            mstudents.remove(regNo);
+            return "Student with regNo " + regNo + " has been deleted.";
+        }
+        return "404 Couldn't find the student";
+    }
+
+    //Update the Student in Map
+    @PutMapping("/student/{id}")
+    public String updateAStudent(@PathVariable("id") String regno, @RequestBody Student student) {
+        if(mstudents.get(regno) != null) {
+			mstudents.put(student.getRegNo(), student);
+			return "The Student Details Updated";
+		}
+		return "404 Couldn't find the student";
     }
     
 
