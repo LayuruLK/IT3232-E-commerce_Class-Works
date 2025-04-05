@@ -1,8 +1,4 @@
-Sure! Here's a **README.md** template written in Markdown that describes the work you’ve done, including the API features for adding, deleting, and updating students, along with the screenshots you’ve mentioned.
 
----
-
-```markdown
 # Day 03 - Student Management API
 
 This project implements a simple **Student Management API** using **Spring Boot**. It allows users to add, delete, and update student records in an in-memory map, along with the creation of a new **Course** model. The API operations are mapped to various HTTP methods, such as **POST**, **DELETE**, and **PUT**.
