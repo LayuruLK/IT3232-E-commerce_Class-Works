@@ -34,6 +34,10 @@ public class AppController {
         students.add(Bob);
         students.add(Amal);
         students.add(Kamal);
+
+        mstudents.put(Bob.getRegNo(), Bob);
+        mstudents.put(Amal.getRegNo(), Amal);
+        mstudents.put(Kamal.getRegNo(), Kamal);
     }
 
     // A method to return a student
