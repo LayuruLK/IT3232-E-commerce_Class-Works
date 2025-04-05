@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import lk.ac.vau.fas.ict.first.Model.Student;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,9 @@ public class AppController {
     Student Bob = new Student("2021ICT01", "Bob Marely", 23, "IT", 3.21);
     Student Amal = new Student("2020ICT02", "Amal Perera", 24, "AMC", 3.41);
     Student Kamal = new Student("2022ICT03", "Kamal Gunasinghe", 22, "AMC", 2.91);
-    List<Student> students = new ArrayList<Student>();
+    
+    private static List<Student> students = new ArrayList<Student>();
+    private Map<String, Student> mstudents = new HashMap<String, Student>();
 
     public AppController() {
         students.add(Bob);
