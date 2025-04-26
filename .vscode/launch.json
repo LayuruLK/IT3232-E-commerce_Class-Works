@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DaysevenApplication<lk.vau.fas.ict-dayseven>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "lk.vau.fas.ict.dayseven.DaysevenApplication",
+            "projectName": "lk.vau.fas.ict-dayseven",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
