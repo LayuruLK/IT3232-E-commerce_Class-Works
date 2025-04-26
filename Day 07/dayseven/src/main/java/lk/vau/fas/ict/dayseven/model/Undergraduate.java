@@ -1,7 +1,10 @@
 package lk.vau.fas.ict.dayseven.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity	
 public class Undergraduate extends Person{
@@ -10,6 +13,8 @@ public class Undergraduate extends Person{
 	 private String degree;
 	 private String university;
 	
+	 @ManyToMany(mappedBy = "undergraduates")
+	 private List<Workshop> workshops;
 	 
 	 public Undergraduate(int id, String email, String gender, String name, long phone, String degree,
 			String university) {
@@ -46,6 +51,16 @@ public class Undergraduate extends Person{
 
 	public void setUniversity(String university) {
 		this.university = university;
+	}
+
+
+	public List<Workshop> getWorkshops() {
+		return workshops;
+	}
+
+
+	public void setWorkshops(List<Workshop> workshops) {
+		this.workshops = workshops;
 	}
 	 
 	 
