@@ -156,7 +156,7 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
 ### 🔹 DailyMenu Table
 
-![DailyMenu Table](screenshots/dailymenu.png)
+![DailyMenu Table](screenshots/daily_menu.png)
 
 ---
 
@@ -181,16 +181,6 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ### 🔹 daily\_menu\_food Join Table
 
 ![Daily Menu Food Join Table](screenshots/daily_menu_food.png)
-
----
-
-## 🗂️ Submission Instructions
-
-After completing the project:
-
-* Copy only the `model` folder and the **generated database backup** to the `Z` drive.
-* Do **not** copy files that are still open in the IDE.
-* Confirm that all relationships are correctly reflected in the generated schema.
 
 ---
 
