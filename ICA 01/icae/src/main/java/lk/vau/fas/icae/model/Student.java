@@ -3,10 +3,14 @@ package lk.vau.fas.icae.model;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
+    @Id
+    private Long id;
+    
     private String academicDegree;
 
     @OneToMany(mappedBy = "student")

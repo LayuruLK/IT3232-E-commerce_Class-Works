@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "IcaeApplication",
+            "request": "launch",
+            "mainClass": "lk.vau.fas.icae.IcaeApplication",
+            "projectName": "icae"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-DaysevenApplication<lk.vau.fas.ict-dayseven>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
