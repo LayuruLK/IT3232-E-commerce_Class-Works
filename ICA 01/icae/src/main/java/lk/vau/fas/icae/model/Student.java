@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Student {
+public class Student extends Person {
     @Id
     private Long id;
     
