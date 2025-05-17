@@ -1,7 +1,8 @@
 package lk.vau.fas.ict.model;
 
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -12,23 +13,25 @@ import jakarta.persistence.OneToMany;
 
 @Entity(name = "department")
 public class Department {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long DepId;
-    private String DName;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long DepId;
+	private String DName;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<Employee> employees;
-    
-    private String Location;
+	@OneToMany(mappedBy = "department")
+	@JsonManagedReference
+	private List<Employee> employees;
 
-    public Department() {}
-    
-    public Department(Long DepId, String DName, String Location) {
-    	this.DepId = DepId;
-    	this.DName = DName;
-    	this.Location = Location;
-    }
+	private String Location;
+
+	public Department() {
+	}
+
+	public Department(Long DepId, String DName, String Location) {
+		this.DepId = DepId;
+		this.DName = DName;
+		this.Location = Location;
+	}
 
 	public Department(Long DepId, String DName, List<Employee> employees, String location) {
 		super();
@@ -69,5 +72,5 @@ public class Department {
 	public void setLocation(String Location) {
 		this.Location = Location;
 	}
-    
+
 }

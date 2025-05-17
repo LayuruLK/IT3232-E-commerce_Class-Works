@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "IctApplication",
+            "request": "launch",
+            "mainClass": "lk.vau.fas.ict.IctApplication",
+            "projectName": "ict"
+        },
+        {
+            "type": "java",
+            "name": "IctApplication",
+            "request": "launch",
+            "mainClass": "lk.vau.fas.ict.IctApplication",
+            "projectName": "IT3232-E-commerce_Class-Works_d3a8fe44"
+        },
+        {
+            "type": "java",
             "name": "IcaeApplication",
             "request": "launch",
             "mainClass": "lk.vau.fas.icae.IcaeApplication",

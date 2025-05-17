@@ -2,17 +2,23 @@ package lk.vau.fas.ict.service;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import lk.vau.fas.ict.model.Department;
 import lk.vau.fas.ict.repo.DepartmentRepo;
 
+@Service
 public class DepartmentService {
-    private DepartmentRepo departmentRepo;
 
-    //Get All Departments
-    @GetMapping
+    private final DepartmentRepo departmentRepo;
+
+    @Autowired
+    public DepartmentService(DepartmentRepo departmentRepo) {
+        this.departmentRepo = departmentRepo;
+    }
+
     public List<Department> getAllDepartments() {
-        return departmentRepo.findAll(); 
+        return departmentRepo.findAll();
     }
 }

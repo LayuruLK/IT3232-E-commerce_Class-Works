@@ -1,6 +1,9 @@
 package lk.vau.fas.ict.model;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,9 +17,8 @@ public class Employee {
     private Date DOB;
 
     @ManyToOne
-    @JoinColumn(name = "DepId", nullable = false)
+    @JsonBackReference
     private Department department;
-
     public Employee() {}
 
     public Employee(Long empId, String empName, String job, double salary, Department department, Date dOB) {
