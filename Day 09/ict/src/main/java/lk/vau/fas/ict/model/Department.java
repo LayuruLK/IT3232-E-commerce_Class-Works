@@ -1,7 +1,14 @@
-package lk.ac.vau.fas.ict.model;
+package lk.vau.fas.ict.model;
 
-import jakarta.persistence.*;
+
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name = "department")
 public class Department {
