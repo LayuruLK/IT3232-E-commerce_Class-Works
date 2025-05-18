@@ -27,4 +27,9 @@ public class DepartmentService {
         return departmentRepo.findById(depId);
     }
 
+    public Department addDepartment(Department department) {
+        department.setDepId(null);
+        return departmentRepo.save(department);
+    }
+
 }
