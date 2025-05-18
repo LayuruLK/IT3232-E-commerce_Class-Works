@@ -1,9 +1,4 @@
-Here is a complete, professional, and well-structured `README.md` file in Markdown syntax tailored to your Spring Boot Department Management project. It includes project description, technologies used, setup guide, API documentation, screenshots, and more:
-
----
-
-```markdown
-# 🏢 Department Management System (Spring Boot + JPA)
+# 🏢 Department Management System (Spring Boot + JPA) - Day 09
 
 This is a simple **Department Management System** built using **Spring Boot** and **Spring Data JPA**. The application manages departments and their associated employees, providing RESTful APIs to perform **CRUD operations** on departments.
 
@@ -58,8 +53,8 @@ src/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/department-management-system.git
-cd department-management-system
+git clone https://github.com/LayuruLK/IT3232-E-commerce_Class-Works/edit/main/Day%2009/
+cd ict
 ````
 
 ### 2. Configure `application.properties`
@@ -67,7 +62,7 @@ cd department-management-system
 Update your `src/main/resources/application.properties` with your database settings:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_db
+spring.datasource.url=jdbc:mysql://localhost:3306/company
 spring.datasource.username=root
 spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
@@ -127,9 +122,9 @@ App will run on: `http://localhost:8080`
 
 ## 🧑‍💻 Author
 
-**Your Name**
-📧 [your.email@example.com](mailto:your.email@example.com)
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/yourusername)
+**LayuruLK**
+📧 [layurulakvidukarunathilaka@gmail.com](mailto:your.layurulakvidukarunathilaka@gmail.com)
+🔗 [LinkedIn](https://linkedin.com/in/layuru-k-02b345245) | [GitHub](https://github.com/LayuruLK)
 
 ---
 
@@ -140,6 +135,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ```
 
 ---
-
-Let me know if you want this adapted for Swagger UI, Docker, employee controller integration, or a specific database setup. I can also write a `LICENSE` file and `application.properties` if needed.
-```
