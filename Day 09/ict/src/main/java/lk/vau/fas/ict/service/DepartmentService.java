@@ -32,4 +32,12 @@ public class DepartmentService {
         return departmentRepo.save(department);
     }
 
+    public Department updateDepartment(Long depId, Department updatedDepartment) {
+        return departmentRepo.findById(depId).map(department -> {
+            department.setDName(updatedDepartment.getDName());
+            department.setLocation(updatedDepartment.getLocation());
+            return departmentRepo.save(department);
+        }).orElseThrow(() -> new RuntimeException("Department not found with id: " + depId));
+    }
+
 }
