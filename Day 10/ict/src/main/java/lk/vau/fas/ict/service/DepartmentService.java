@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lk.vau.fas.ict.model.Department;
 import lk.vau.fas.ict.repo.DepartmentRepo;
+
 
 @Service
 public class DepartmentService {
@@ -19,31 +22,24 @@ public class DepartmentService {
         this.departmentRepo = departmentRepo;
     }
 
+    // Get all departments
     public List<Department> getAllDepartments() {
         return departmentRepo.findAll();
     }
 
-    public Optional<Department> getDepartmentById(Long depId) {
-        return departmentRepo.findById(depId);
+    // Get department by ID
+    public Department getDepartmentById(Long depId) {
+    	if(departmentRepo.findById(depId).isEmpty()) {
+    		throw new EntityNotFoundException("Department Not Found");
+    	}
+        return departmentRepo.findById(depId).get();
     }
-
-    public Department addDepartment(Department department) {
-        department.setDepId(null);
-        return departmentRepo.save(department);
-    }
-
-    public Department updateDepartment(Long depId, Department updatedDepartment) {
-        return departmentRepo.findById(depId).map(department -> {
-            department.setDName(updatedDepartment.getDName());
-            department.setLocation(updatedDepartment.getLocation());
-            return departmentRepo.save(department);
-        }).orElseThrow(() -> new RuntimeException("Department not found with id: " + depId));
-    }
-
-    public void deleteDepartmentById(Long depId) {
-        if (!departmentRepo.existsById(depId)) {
-            throw new RuntimeException("Department not found with id: " + depId);
-        }
-        departmentRepo.deleteById(depId);
+    
+    public String addDepartment(Department department) {
+    	if(departmentRepo.findById(department.getDepId()).isPresent()) {
+    		throw new DuplicateKeyException("The department id is already available");
+    	}
+    	departmentRepo.save(department);
+    	return "New department added";
     }
 }
