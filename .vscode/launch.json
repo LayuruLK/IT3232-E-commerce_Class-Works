@@ -5,6 +5,13 @@
             "name": "IctApplication",
             "request": "launch",
             "mainClass": "lk.vau.fas.ict.IctApplication",
+            "projectName": "lk.vau.fas-ict"
+        },
+        {
+            "type": "java",
+            "name": "IctApplication",
+            "request": "launch",
+            "mainClass": "lk.vau.fas.ict.IctApplication",
             "projectName": "ict"
         },
         {

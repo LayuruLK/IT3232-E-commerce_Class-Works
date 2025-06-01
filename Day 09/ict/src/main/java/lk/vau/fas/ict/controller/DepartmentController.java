@@ -1,62 +1,49 @@
 package lk.vau.fas.ict.controller;
 
-import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lk.vau.fas.ict.model.Department;
+import lk.vau.fas.ict.repo.DepartmentRepo;
 import lk.vau.fas.ict.service.DepartmentService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/dept")
+@RequestMapping("/departments")
 public class DepartmentController {
 
     @Autowired
-    public DepartmentService service;
+    private DepartmentService service;
 
-    @GetMapping("/all")
+    @Autowired
+    private DepartmentRepo departmentRepo;
+
+    // Get all departments
+    @GetMapping
     public ResponseEntity<List<Department>> getAllDepartments() {
-        return new ResponseEntity<List<Department>>(service.getAllDepartments(), HttpStatus.OK);
+    	return new ResponseEntity<List<Department>>
+		(service.getAllDepartments(),HttpStatus.OK);
     }
 
-    @GetMapping("/{depId}")
-    public ResponseEntity<?> getDepartmentById(@PathVariable Long depId) {
-        Optional<Department> department = service.getDepartmentById(depId);
+    // Get department by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Department> getDepartmentById(@PathVariable("id") Long depId) {
+    	return new ResponseEntity<Department>(service.getDepartmentById(depId),HttpStatus.OK);
+    }
 
-        if (department.isPresent()) {
-            return new ResponseEntity<>(department.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Department not found with id: " + depId, HttpStatus.NOT_FOUND);
+
+    // Delete a department
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteDepartment(@PathVariable Long id) {
+        if (departmentRepo.existsById(id)) {
+            departmentRepo.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-    }
-
-    @PostMapping("/add")
-    public ResponseEntity<?> addDepartment(@RequestBody Department department) {
-        department.setDepId(null);
-        Department createDept = service.addDepartment(department);
-        return new ResponseEntity<>(createDept, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/update/{depId}")
-    public ResponseEntity<?> updateDepartment(@PathVariable Long depId, @RequestBody Department department) {
-        Department updatedDept = service.updateDepartment(depId, department);
-        return new ResponseEntity<>(updatedDept, HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{depId}")
-    public ResponseEntity<?> deleteDepartment(@PathVariable Long depId) {
-        service.deleteDepartmentById(depId);
-        return new ResponseEntity<>("Department deleted successfully", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
