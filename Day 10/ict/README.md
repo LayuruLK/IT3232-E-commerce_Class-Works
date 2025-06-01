@@ -1,6 +1,3 @@
-### 📄 `README.md`
-
-````markdown
 # ⚠️ Spring Boot Exception Handling System
 
 Welcome to the **Spring Boot Exception Handling System** — a clean and efficient RESTful API built with Java and Spring Boot. This project demonstrates **centralized exception handling** using `@RestControllerAdvice` with real-world examples involving departments and employees.
