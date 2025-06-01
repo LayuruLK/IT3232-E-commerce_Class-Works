@@ -2,6 +2,6 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
-        "Day 09/ict/src/main/java"
+        "Day 10/ict/src/main/java"
     ]
 }
