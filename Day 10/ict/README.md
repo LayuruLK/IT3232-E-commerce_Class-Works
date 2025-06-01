@@ -1,133 +1,161 @@
-# 🏢 Department Management System (Spring Boot + JPA) - Day 09
+### 📄 `README.md`
 
-This is a simple **Department Management System** built using **Spring Boot** and **Spring Data JPA**. The application manages departments and their associated employees, providing RESTful APIs to perform **CRUD operations** on departments.
+````markdown
+# ⚠️ Spring Boot Exception Handling System
 
-It follows a clean **MVC architecture**, separating concerns across **Models**, **Repositories**, **Services**, and **Controllers**.
+Welcome to the **Spring Boot Exception Handling System** — a clean and efficient RESTful API built with Java and Spring Boot. This project demonstrates **centralized exception handling** using `@RestControllerAdvice` with real-world examples involving departments and employees.
 
----
-
-## 📌 Features
-
-- Add, update, delete, and view departments
-- Each department can contain multiple employees (One-To-Many relationship)
-- Structured and layered Spring Boot project
-- JPA for ORM with PostgreSQL/MySQL/H2 compatibility
-- JSON serialization/deserialization with proper reference handling
+![Example Screenshot](screenshots/example.png)
 
 ---
 
-## 🛠️ Technologies Used
+## 🧠 Project Summary
 
-- **Java 17+**
-- **Spring Boot**
-- **Spring Data JPA**
-- **Hibernate**
-- **Jackson (for JSON handling)**
-- **Maven**
-- **MySQL/PostgreSQL/H2 (you can configure any)**
+This project shows how to gracefully handle runtime exceptions in a Spring Boot backend. Instead of sending confusing technical messages to API consumers, the system returns meaningful HTTP responses using custom error structures.
 
 ---
 
-## 📁 Project Structure
+## 📌 Key Features
 
-```
+- ✅ Centralized exception handling with `@RestControllerAdvice`
+- 🧩 Entity-relationship mapping using JPA and Hibernate
+- 🚫 Handles `EntityNotFoundException` and `DuplicateKeyException`
+- 🌐 RESTful endpoints for managing departments
+- 📦 Clean architecture (Model → Repo → Service → Controller)
+- 📋 Structured error responses (`ErrorResponse` class)
 
+---
+
+## 🧱 Tech Stack
+
+| Technology | Description              |
+|------------|--------------------------|
+| Java       | Main programming language |
+| Spring Boot| Framework for API building |
+| JPA/Hibernate | ORM for database interaction |
+| Maven      | Dependency management     |
+| Jackson    | JSON serialization        |
+
+---
+
+## 🗂️ Project Structure
+
+```bash
 src/
-├── controller/
-│   └── DepartmentController.java
-├── model/
-│   ├── Department.java
-│   └── Employee.java
-├── repo/
-│   └── DepartmentRepo.java
-├── service/
-│   └── DepartmentService.java
-└── Application.java
-
+└── main/
+    └── java/
+        └── lk/vau/fas/ict/
+            ├── model/
+            │   ├── Department.java
+            │   ├── Employee.java
+            │   └── ErrorResponse.java
+            ├── repo/
+            │   └── DepartmentRepo.java
+            ├── service/
+            │   └── DepartmentService.java
+            ├── controller/
+            │   └── DepartmentController.java
+            └── exceptionHandler/
+                └── GenericExceptionHandler.java
 ````
+
+---
+
+## 🔍 API Endpoints
+
+### 📁 Department Endpoints
+
+| Method | Endpoint            | Description             |
+| ------ | ------------------- | ----------------------- |
+| GET    | `/departments`      | Get all departments     |
+| GET    | `/departments/{id}` | Get a department by ID  |
+| DELETE | `/departments/{id}` | Delete department by ID |
+| POST   | *(to be added)*     | Add a new department    |
+
+### 🛑 Exception Types Handled
+
+| Exception                 | HTTP Status Code          | Returned Message                         |
+| ------------------------- | ------------------------- | ---------------------------------------- |
+| `EntityNotFoundException` | 404 Not Found             | "Department Not Found"                   |
+| `DuplicateKeyException`   | 400 Bad Request           | "The department id is already available" |
+| `Exception` (generic)     | 500 Internal Server Error | *Root cause message*                     |
+
+---
+
+## 📦 Example Error Response (JSON)
+
+```json
+{
+  "statusCode": 404,
+  "errorMessage": "Department Not Found"
+}
+```
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repository
+### ✅ Prerequisites
 
-```bash
-git clone https://github.com/LayuruLK/IT3232-E-commerce_Class-Works/edit/main/Day%2009/
-cd ict
-````
+* Java 17+
+* Maven 3.6+
+* Spring Boot (v3+ recommended)
+* MySQL/PostgreSQL (or any JPA-compatible DB)
 
-### 2. Configure `application.properties`
+### 📥 Installation
 
-Update your `src/main/resources/application.properties` with your database settings:
+1. Clone the repository:
 
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/company
-spring.datasource.username=root
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+   ```bash
+   git clone https://github.com/LayuruLK/IT3232-E-commerce_Class-Works/tree/main/Day%2010
+   cd ict
+   ```
+
+2. Configure `application.properties` with your database connection.
+
+3. Build and run the application:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. Access endpoints via `http://localhost:8080/departments`
+
+---
+
+## 🧪 Example Screenshot
+
+You can see how exceptions are handled in the following screenshot:
+
+![Example](screenshots/example.png)
+
+---
+
+## 🤝 Contribution
+
+Feel free to fork, raise issues, or submit PRs if you'd like to improve this demo!
+
+---
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+## 💬 Feedback
+
+For improvements or suggestions, please open an issue or contact me directly.
+
 ```
 
-### 3. Run the application
+---
 
-```bash
-./mvnw spring-boot:run
+Let me know if you'd like:
+- A `Postman` collection file
+- Sample data for testing
+- Markdown badge decorations
+- Or converting this into GitHub Pages or GitHub Wiki format
+
+I'm happy to enhance it further!
 ```
-
-App will run on: `http://localhost:8080`
-
----
-
-## 📡 API Endpoints
-
-| Method | Endpoint               | Description                |
-| ------ | ---------------------- | -------------------------- |
-| GET    | `/dept/all`            | Get all departments        |
-| GET    | `/dept/{depId}`        | Get department by ID       |
-| POST   | `/dept/add`            | Add a new department       |
-| PUT    | `/dept/update/{depId}` | Update existing department |
-| DELETE | `/dept/delete/{depId}` | Delete department by ID    |
-
----
-
-## 📸 Screenshots
-
-| Action              | Image                                 |
-| ------------------- | ------------------------------------- |
-| Add Department      | ![Add](screenshots/add.png)           |
-| Get All Departments | ![Get All](screenshots/getall.png)    |
-| Get By ID           | ![Get By ID](screenshots/getbyid.png) |
-| Update Department   | ![Update](screenshots/update.png)     |
-| Delete Department   | ![Delete](screenshots/delete.png)     |
-
----
-
-## 🧠 Data Relationships
-
-* A **Department** has multiple **Employees**
-* Mapped using `@OneToMany` and `@ManyToOne`
-* JSON references managed via `@JsonManagedReference` and `@JsonBackReference` to avoid infinite loops
-
----
-
-## 🗂️ Future Improvements
-
-* Add full CRUD for `Employee` entity
-* Integrate Swagger UI for API documentation
-* Add pagination and filtering
-* Add authentication & authorization
-
----
-
-## 🧑‍💻 Author
-
-**LayuruLK**
-📧 [layurulakvidukarunathilaka@gmail.com](mailto:your.layurulakvidukarunathilaka@gmail.com)
-🔗 [LinkedIn](https://linkedin.com/in/layuru-k-02b345245) | [GitHub](https://github.com/LayuruLK)
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
