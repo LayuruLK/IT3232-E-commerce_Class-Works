@@ -30,33 +30,33 @@ public class DepartmentController {
         return new ResponseEntity<List<Department>>(service.getAllDepartments(), HttpStatus.OK);
     }
 
-    @GetMapping("/{depId}")
-    public ResponseEntity<?> getDepartmentById(@PathVariable Long depId) {
-        Optional<Department> department = service.getDepartmentById(depId);
+    // @GetMapping("/{depId}")
+    // public ResponseEntity<?> getDepartmentById(@PathVariable Long depId) {
+    //     Optional<Department> department = service.getDepartmentById(depId);
 
-        if (department.isPresent()) {
-            return new ResponseEntity<>(department.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Department not found with id: " + depId, HttpStatus.NOT_FOUND);
-        }
-    }
+    //     if (department.isPresent()) {
+    //         return new ResponseEntity<>(department.get(), HttpStatus.OK);
+    //     } else {
+    //         return new ResponseEntity<>("Department not found with id: " + depId, HttpStatus.NOT_FOUND);
+    //     }
+    // }
 
-    @PostMapping("/add")
-    public ResponseEntity<?> addDepartment(@RequestBody Department department) {
-        department.setDepId(null);
-        Department createDept = service.addDepartment(department);
-        return new ResponseEntity<>(createDept, HttpStatus.CREATED);
-    }
+    // @PostMapping("/add")
+    // public ResponseEntity<?> addDepartment(@RequestBody Department department) {
+    //     department.setDepId(null);
+    //     Department createDept = service.addDepartment(department);
+    //     return new ResponseEntity<>(createDept, HttpStatus.CREATED);
+    // }
 
-    @PutMapping("/update/{depId}")
-    public ResponseEntity<?> updateDepartment(@PathVariable Long depId, @RequestBody Department department) {
-        Department updatedDept = service.updateDepartment(depId, department);
-        return new ResponseEntity<>(updatedDept, HttpStatus.OK);
-    }
+    // @PutMapping("/update/{depId}")
+    // public ResponseEntity<?> updateDepartment(@PathVariable Long depId, @RequestBody Department department) {
+    //     Department updatedDept = service.updateDepartment(depId, department);
+    //     return new ResponseEntity<>(updatedDept, HttpStatus.OK);
+    // }
 
-    @DeleteMapping("/delete/{depId}")
-    public ResponseEntity<?> deleteDepartment(@PathVariable Long depId) {
-        service.deleteDepartmentById(depId);
-        return new ResponseEntity<>("Department deleted successfully", HttpStatus.OK);
-    }
+    // @DeleteMapping("/delete/{depId}")
+    // public ResponseEntity<?> deleteDepartment(@PathVariable Long depId) {
+    //     service.deleteDepartmentById(depId);
+    //     return new ResponseEntity<>("Department deleted successfully", HttpStatus.OK);
+    // }
 }
