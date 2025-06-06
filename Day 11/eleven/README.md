@@ -157,7 +157,6 @@ lk.vau.fas.day.eleven
    ```bash
    git clone https://github.com/LayuruLK/IT3232-E-commerce_Class-Works.git
    cd IT3232-E-commerce_Class-Works/Day\ 11/eleven
-````
 
 2. **Configure database connection**
 
@@ -187,7 +186,7 @@ lk.vau.fas.day.eleven
 ## Contact
 
 * **Email:** [layurulakvidukarunathilaka@gmail.com](mailto:layurulakvidukarunathilaka@gmail.com)
-* **LinkedIn:** [Layuru K](https://www.linkedin.com/in/layuru-k-02b345245)
+* **LinkedIn:** [Layuru Karunathilaka](https://www.linkedin.com/in/layuru-k-02b345245)
 
 ---
 
