@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lk.vau.fas.day.eleven.model.Department;
+import lk.vau.fas.day.eleven.model.ViewDepartment;
 import lk.vau.fas.day.eleven.repository.DepartmentRepository;
 import lk.vau.fas.day.eleven.service.DepartmentService;
 
@@ -48,4 +49,18 @@ public class DepartmentController {
         return new ResponseEntity<List<String>>(departmentService.getDepartmentNames(),HttpStatus.OK);
     }
 
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Department>> searchDepartmentByName(@PathVariable("name") String name){
+        return new ResponseEntity<List<Department>>(departmentService.searchDepartments(name),HttpStatus.OK);
+    }
+
+    @GetMapping("/count/{dept_id}")
+    public ResponseEntity<Integer> getEmployeeCount(@PathVariable("dept_id") Integer dept_id) {
+        return new ResponseEntity<Integer>(departmentService.getEmployeeCount(dept_id),HttpStatus.OK);
+    }
+
+    @GetMapping("/view/count/{id}")
+	public ResponseEntity<ViewDepartment> vcountEmp(@PathVariable("id") int id) {
+		return new ResponseEntity<ViewDepartment>(departmentService.getEmpCount(id),HttpStatus.OK);
+	}
 }

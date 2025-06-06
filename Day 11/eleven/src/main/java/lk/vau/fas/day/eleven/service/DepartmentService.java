@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import jakarta.persistence.EntityNotFoundException;
 import lk.vau.fas.day.eleven.model.Department;
+import lk.vau.fas.day.eleven.model.ViewDepartment;
 import lk.vau.fas.day.eleven.repository.DepartmentRepository;
 
 @Service
@@ -45,5 +46,26 @@ public class DepartmentService {
             throw new EntityNotFoundException("Departments Not Found");
         }
         return departmentRepository.getDepartmentNames();
+    }
+
+    //Search Departments by name
+    public List<Department> searchDepartments(String name){
+        return departmentRepository.searchName(name);
+    }
+
+    //Display the count of employee belongs to given department id
+    public Integer getEmployeeCount(int id) {
+        return departmentRepository.numberOfEmp(id);
+    }
+
+    //Display the count of employee along with department details
+    public ViewDepartment getEmpCount(int id) {
+        if (departmentRepository.findById(id).isEmpty()) {
+            throw new EntityNotFoundException("Department Not FOund");
+        }
+        Department department = departmentRepository.findById(id).get();
+        ViewDepartment viewDepartment = new ViewDepartment(department.getId(), department.getName(),
+				department.getEstablished(), getEmployeeCount(id));
+        return viewDepartment;
     }
 }
