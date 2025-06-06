@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +36,11 @@ public class DepartmentController {
     public ResponseEntity<Department> getDepartmentById(@PathVariable("id") int id) {
         return  new ResponseEntity<Department>
         (departmentService.getDepartmentById(id),HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> addNewDepartment(@RequestBody Department department) {
+        return new ResponseEntity<String>(departmentService.addDepartment(department),HttpStatus.OK);
     }
 
 }
