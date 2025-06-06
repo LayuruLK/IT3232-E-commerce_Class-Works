@@ -39,5 +39,11 @@ public class DepartmentService {
         return "New Department has been added";
     }
 
-
+    //Get Departments Names
+    public List<String> getDepartmentNames(){
+        if(departmentRepository.getDepartmentNames().isEmpty()) {
+            throw new EntityNotFoundException("Departments Not Found");
+        }
+        return departmentRepository.getDepartmentNames();
+    }
 }

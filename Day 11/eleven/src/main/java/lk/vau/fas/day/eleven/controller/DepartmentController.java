@@ -43,4 +43,9 @@ public class DepartmentController {
         return new ResponseEntity<String>(departmentService.addDepartment(department),HttpStatus.OK);
     }
 
+    @GetMapping("/names")
+    public ResponseEntity<List<String>> getDepartmentNames(){
+        return new ResponseEntity<List<String>>(departmentService.getDepartmentNames(),HttpStatus.OK);
+    }
+
 }
