@@ -12,6 +12,6 @@ import lk.ac.vau.fas.ict.models.Student;
 public interface StudentRepository extends JpaRepository<Student, String> {
     
     // Get student who borrowed books when given book id
-    @Query("SELECT s from Student s JOIN b.borrows WHERE b.book.id=?1")
+    @Query("SELECT s from Student s JOIN s.borrows b WHERE b.book.id=?1")
     public List<Student> getBorrowedStudent(String bookId);
 }
