@@ -20,7 +20,7 @@ public class GenericExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponce> handleEntityNotFound(DataIntegrityViolationException exception) {
-        ErrorResponce errorResponce = new ErrorResponce(HttpStatus.NOT_FOUND.value(),exception.getMessage().toString());
-        return new ResponseEntity<ErrorResponce>(errorResponce,HttpStatus.NOT_FOUND);
+        ErrorResponce errorResponce = new ErrorResponce(HttpStatus.CONFLICT.value(),exception.getMessage().toString());
+        return new ResponseEntity<ErrorResponce>(errorResponce,HttpStatus.CONFLICT);
     }
 }
