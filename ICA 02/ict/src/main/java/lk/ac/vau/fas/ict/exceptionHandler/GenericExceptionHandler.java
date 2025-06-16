@@ -19,8 +19,14 @@ public class GenericExceptionHandler {
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<ErrorResponce> handleEntityNotFound(DataIntegrityViolationException exception) {
+    public ResponseEntity<ErrorResponce> handleDataViolation(DataIntegrityViolationException exception) {
         ErrorResponce errorResponce = new ErrorResponce(HttpStatus.CONFLICT.value(),exception.getMessage().toString());
         return new ResponseEntity<ErrorResponce>(errorResponce,HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponce> handleCommonException(Exception exception) {
+        ErrorResponce errorResponce = new ErrorResponce(HttpStatus.INTERNAL_SERVER_ERROR.value(),exception.getMessage().toString());
+        return new ResponseEntity<ErrorResponce>(errorResponce,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
